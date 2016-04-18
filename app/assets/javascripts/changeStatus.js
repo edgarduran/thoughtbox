@@ -8,12 +8,8 @@ function markRead() {
     var $link = $(this).parents('.link')
     var $linkId = parseInt($(this).parents('.link').attr('link-id'));
     var status = $(this).parents().find('#status').text();
+    var newStatus = true;
 
-    if (status === false) {
-      var newStatus = true;
-    } else {
-      var newStatus = false;
-    }
 
     $.ajax({
       type: 'PUT',
@@ -34,12 +30,8 @@ function markUnread() {
     var $link = $(this).parents('.link')
     var $linkId = parseInt($(this).parents('.link').attr('link-id'));
     var status = $(this).parents().find('#status').text();
+    var newStatus = false;
 
-    if (status === true) {
-      var newStatus = false;
-    } else {
-      var newStatus = true;
-    }
 
     $.ajax({
       type: 'PUT',
