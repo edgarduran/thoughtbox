@@ -3,50 +3,54 @@ $(document).ready(function(){
   markUnread();
 });
 
-var readStatus = {
-  read: true,
-  unread: false
-};
-
-var unreadStatus = {
-  undread: false,
-  read: true
-};
-
 function markRead() {
-  $('.links-list').delegate('#mark-read', 'click', function() {
-    var $link    = $(this).parents('.link');
+  $('.links-list').delegate('#mark-read', 'click', function () {
+    var $link = $(this).parents('.link')
     var $linkId = parseInt($(this).parents('.link').attr('link-id'));
-    var status = $link.find('#link-read');
-    var statusText = status.text();
-    var data = { read: readStatus[statusText] };
+    var status = $(this).parents().find('#status').text();
+
+    if (status === false) {
+      var newStatus = true;
+    } else {
+      var newStatus = false;
+    }
 
     $.ajax({
       type: 'PUT',
-      url: '/api/v1/links/' + $linkId,
-      data: data,
+      data: {status: newStatus},
+      url:  '/api/v1/links/' + $linkId,
       success: function() {
-        status.text(readStatus[statusText]);
+        $link.find('#status').text(newStatus);
+      },
+      error: function(xhr) {
+        console.log(xhr.responseText);
       }
-    })
-  })
-};
+    });
+  });
+}
 
 function markUnread() {
-  $('.links-list').delegate('#mark-unread', 'click', function() {
-    var $link    = $(this).parents('.link');
+  $('.links-list').delegate('#mark-unread', 'click', function () {
+    var $link = $(this).parents('.link')
     var $linkId = parseInt($(this).parents('.link').attr('link-id'));
-    var status = $link.find('#link-read');
-    var statusText = status.text();
-    var data = { read: unreadStatus[statusText] };
+    var status = $(this).parents().find('#status').text();
+
+    if (status === true) {
+      var newStatus = false;
+    } else {
+      var newStatus = true;
+    }
 
     $.ajax({
       type: 'PUT',
-      url: '/api/v1/links/' + $linkId,
-      data: data,
+      data: {status: newStatus},
+      url:  '/api/v1/links/' + $linkId,
       success: function() {
-        status.text(unreadStatus[statusText]);
+        $link.find('#status').text(newStatus);
+      },
+      error: function(xhr) {
+        console.log(xhr.responseText);
       }
-    })
-  })
-};
+    });
+  });
+}
