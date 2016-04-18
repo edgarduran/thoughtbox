@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :links, only: [:index, :create, :update], defaults: { format: :json }
+      resources :links, only: [:index, :create, :update, :destroy], defaults: { format: :json }
     end
   end
 

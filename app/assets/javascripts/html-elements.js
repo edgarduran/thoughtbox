@@ -1,0 +1,53 @@
+function individualLink(link) {
+  return (
+    "<div class='link' link-id='" + link.id + "'>"
+    +"<div class='row'>"
+    +"<div class='col s12 m4'>"
+    +"<div class='card blue-grey darken-1'>"
+    +"<div class='card-content white-text'>"
+    +"<h2 id='link-title'>" + link.title + "</h2>"
+    +"<p id='link-url'>" + link.url + "</p>"
+    +"<h5>Link Read?</h5>"
+    +"<p id='status'>" + link.read + "</p>"
+    +"</div>"
+    +"<div class='card-action'>"
+    +"<button id='mark-read'>Mark as read</button><br>"
+    +"<button id='mark-unread'>Mark as Unread</button><br>"
+    +"<button id='edit-link'>Edit Link</button>"
+    +"<button id='delete-link'>Delete</button>"
+    +"</div>"
+    +"</div>"
+    +"</div>"
+    +"</div>"
+    +"</div>"
+  )
+}
++"<td><a class='waves-effect waves-teal btn-flat increase-link-read'> ✓ </a></td>"
++"<td><a class='waves-effect waves-teal btn-flat decrease-link-read'> - </a></td>"
+
+function editForm() {
+  return $(
+    "<div class='container'>"
+    +"<div class='row'>"
+    +"<form class='col s12'>"
+    +"<h5>Make changes here</h5>"
+    +"<div class='row'>"
+    +"<div class='input-field col s6'>"
+    +"<i class='material-icons prefix'>star_rate</i>"
+    +"<label for='icon_prefix'>Title</label>"
+    +"<input class='form-control' id='edit-title' type='text' class='validate'>"
+    +"</div>"
+    +"</div>"
+    +"<div class='row'>"
+    +"<div class='input-field col s6'>"
+    +"<i class='material-icons prefix'>comment</i>"
+    +"<label for='star_rate'>Link</label>"
+    +"<textarea id='edit-url' class='materialize-textarea' length='75'></textarea>"
+    +"<a class='btn-floating btn-large waves-effect waves-light green' id='save-changes' value='Save Changes'><i class='material-icons'>done</i></a>"
+    +"</div>"
+    +"</div>"
+    +"</form>"
+    +"</div>"
+    +"</div>"
+  )
+};
